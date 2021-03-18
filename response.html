@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Response web page</title>
+</head>
+<body>
+    <div class="Introduction">
+        <h1>future</h1>
+        <h4>To get future click on the button</h4>
+        <div>
+            <button onclick="getfuture()">Get future</button>
+        </div>
+    </div>
+
+    <div id="future"></div>
+    <script>
+        const getfuture = () => {
+            fetch('http://127.0.0.1:3001').then(
+                (res) => {
+                    console.log(res)
+                    return res.text()
+                }
+            ).then(data => {
+            
+                console.log(data)
+                document.getElementById("future").innerHTML = data
+            }).catch(err => {
+                document.getElementById("future").innerHTML = err
+            })
+        }
+    </script>
+</body>
+</html>
